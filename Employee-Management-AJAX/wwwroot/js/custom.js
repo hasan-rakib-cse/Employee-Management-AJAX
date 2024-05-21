@@ -153,6 +153,7 @@ function UpdateEmployee() {
     });
 }
 
+
 function Details(id) {
     let empDetailsId = id;
     $("#DetailsModal").modal('show');
@@ -183,18 +184,10 @@ function Details(id) {
 }
 
 
-
-
-
-
-
-
-
-
-
 function HideModalPopUp() {
     $("#EmployeeModal").modal('hide')
 }
+
 
 function ClearTextBox() {
     $('#EmployeeId').val('');

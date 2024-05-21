@@ -40,7 +40,6 @@ namespace Employee_Management_AJAX.Controllers
         //    }
         //}
 
-
         [HttpPost]
         public JsonResult CreateEmployee(Employee employee)
         {
@@ -56,7 +55,6 @@ namespace Employee_Management_AJAX.Controllers
             return new JsonResult("Data is Saved");
         }
 
-
         [HttpPost]
         public JsonResult DeleteEmployee(int id)
         {
@@ -68,14 +66,12 @@ namespace Employee_Management_AJAX.Controllers
             return new JsonResult("Data is Deleted");
         }
 
-
         public JsonResult EditEmployee(int id)
         {
             var data = _context.Employee.Find(id);
 
             return new JsonResult(data);
         }
-
 
         [HttpPost]
         public JsonResult UpdateEmployee(Employee employee)
@@ -84,7 +80,6 @@ namespace Employee_Management_AJAX.Controllers
             _context.SaveChanges();
             return new JsonResult("Record Updated");
         }
-
 
         public JsonResult EmployeeDetails (int id)
         {
