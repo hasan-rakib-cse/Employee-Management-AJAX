@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h3 class="alert alert-primary text-center">Employee List</h3>
+
+<div class="mb-3">
+    <button class="btn btn-outline-primary" id="AddEmployeeModal">Add Employee</button>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Salary</th>
+            <th style="min-width: 100px; max-width: 100%; width: 100px" class="text-end">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="table_data">
+    </tbody>
+</table>
+
+
+@* Modal Popup *@
+<div class="modal fade" id="EmployeeModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="EmpCRUDstatus"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="" method="post" id="addEmployeeForm">
+                    <div class="form-group mb-2" id="EmployeeIdDiv">
+                        <label class="mb-1">Id</label>
+                        <input type="text" class="form-control" id="EmployeeId" disabled />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="mb-1">Name</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Please Enter Name" required />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="mb-1">Designation</label>
+                        <input type="text" class="form-control" id="Designation" placeholder="Please Enter Designation" required />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="mb-1">City</label>
+                        <input type="text" class="form-control" id="City" placeholder="Please Enter City" required />
+                    </div>
+                    <div class="form-group">
+                        <label class="mb-1">Salary</label>
+                        <input type="text" class="form-control" id="Salary" placeholder="Please Enter Salary" required />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="AddEmployee();" id="AddEmployee">Create</button>
+                <button type="button" style="display: none;" class="btn btn-primary" onclick="UpdateEmployee();" id="UpdateEmployee">Update</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                @* <button type="submit" class="btn btn-success" id="AddEmployee">Add Employee</button> *@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* Modal PopUp for Details *@
+<div class="modal fade" id="DetailsModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary">Employee Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent" style="width: 30%;">Id</span>
+                    <input type="text" class="form-control" id="EmployeeId2" disabled />
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent" style="width: 30%;">Name</span>
+                    <input type="text" class="form-control" id="Name2" disabled />
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent" style="width: 30%;">Designation</span>
+                    <input type="text" class="form-control" id="Designation2" disabled />
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent" style="width: 30%;">City</span>
+                    <input type="text" class="form-control" id="City2" disabled />
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent" style="width: 30%;">Salary</span>
+                    <input type="text" class="form-control" id="Salary2" disabled />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-warning" id="DetailsEditBtn">Edit</a>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* hidden input er maddhome url pass kortase *@
+<div>
+    <input type="hidden" id="urlEmployeeData" value="@Url.Action("EmployeeList", "Ajax")" />
+</div>
+
+
+<a href="~/lib/jquery/dist/jquery.min.map"></a>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/custom.js"></script>
